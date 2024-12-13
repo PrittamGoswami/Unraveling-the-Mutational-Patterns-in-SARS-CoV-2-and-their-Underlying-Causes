@@ -30,7 +30,7 @@ def run_mafft(input_fasta, output_fasta, threads=3):
 
 def create_phylogenetic_tree(alignment_file, outgroup_sequence, sample, threads,):
     """
-    Create a rooted IQ-TREE phylogenetic tree by specifying the first sequence in the alignment as the outgroup.
+    Create a phylogenetic tree using IQ-TREE by specifying the first sequence in the alignment as the outgroup.
 
     Parameters:
         - alignment_file (str): Path to the input alignment file.
@@ -83,8 +83,10 @@ def construct_msa_and_phylogenetic_tree(folder_path, outgroup_sequence, sample_s
         # construct phylogenetic tree        
         create_phylogenetic_tree(msa_output_fasta, outgroup_sequence, sample, threads_to_be_used)
 
-# Run the Code
-sample_size=4000
-outgroup_sequence = "NC_045512.2"
-threads_to_be_used=30        
+
+sample_size=4000 # No of Genomes per sample
+outgroup_sequence = "NC_045512.2" # Outgroup Sequence ID
+threads_to_be_used=30 # No of CPU threads to use       
+
+# Run the Code to Generate MSA and Phylogenetic trees
 construct_msa_and_phylogenetic_tree("../Samples/", outgroup_sequence,sample_size, threads_to_be_used)
